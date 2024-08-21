@@ -31,6 +31,10 @@ function App() {
     }
   };
 
+  const handleCharacterSelection = (character) =>{
+    setSelectedCharacter(character);
+  };
+
   const handlePrevious = () => {
     if (info.prev) {
       fetchCharacters(info.prev);
@@ -56,7 +60,7 @@ function App() {
         {loading && <p>Loading...</p>}  {/* Display loading state */}
         {error && <p className="error">{error}</p>}  {/* Display error message */}
         
-        {!loading && !error && <CharacterList characters={characters} />}
+        {!loading && !error && <CharacterList characters={characters} onSelectCharacter={handleCharacterSelection}/>}
         
         <Pagination prev={info.prev} next={info.next} onPrevious={handlePrevious} onNext={handleNext} />
         
