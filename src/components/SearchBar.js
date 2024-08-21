@@ -4,9 +4,9 @@ const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = () => {
-    if (searchTerm.trim()!=='');{
+    if (searchTerm.trim()!=='');
       onSearch(searchTerm);
-    }
+    
   };
 
   return (
