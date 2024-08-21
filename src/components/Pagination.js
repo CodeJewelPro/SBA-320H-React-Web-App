@@ -1,5 +1,6 @@
 import React from 'react';
 
+//renders pagination buttons tonavigate between pages
 const Pagination = ({ prev, next, onPrevious, onNext }) => {
   return (
     <div className="pagination">

@@ -1,5 +1,6 @@
-import React from 'react';
+import React from 'react'; // Import react
 
+// Displays a single character's basic info
 const CharacterCard = ({ character,onSelectCharacter }) => {
   return (
     <div className="character-card" onClick={()=> onSelectCharacter(character)}>

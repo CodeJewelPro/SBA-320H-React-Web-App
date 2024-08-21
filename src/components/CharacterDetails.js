@@ -1,8 +1,10 @@
-import React from 'react';
+import React from 'react'; //Import react
 
+
+//displays info  of a selected character
 const CharacterDetails = ({ character }) => {
   if (!character) return <div>Select a character to see details</div>;
-
+// Prompt user to select a character if they none is selected.
   return (
     <div className="character-details">
       <h1>{character.name}</h1>

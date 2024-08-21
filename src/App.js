@@ -1,23 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { getCharacters } from './services/rickAndMortyServices';
-import CharacterList from './components/CharacterList';
-import CharacterDetails from './components/CharacterDetails';
-import Pagination from './components/Pagination';
-import SearchBar from './components/SearchBar';
-import './styles.css';  
+import React, { useState, useEffect } from 'react';// Import React and hooks
+import { getCharacters } from './services/rickAndMortyServices'; // Fetch characters
+import CharacterList from './components/CharacterList'; // Character list component 
+import CharacterDetails from './components/CharacterDetails'; // Character details component
+import Pagination from './components/Pagination';// Pagination component 
+import SearchBar from './components/SearchBar'; // Serch bar
+import './styles.css';  // Import my styling 
 
 function App() {
-  const [characters, setCharacters] = useState([]);
-  const [selectedCharacter, setSelectedCharacter] = useState(null);
-  const [info, setInfo] = useState({});
-  const [loading, setLoading] = useState(true);  
-  const [error, setError] = useState(null);  
+  //HOOKS
+  const [characters, setCharacters] = useState([]); // store character data
+  const [selectedCharacter, setSelectedCharacter] = useState(null); // store selected character
+  const [info, setInfo] = useState({}); // store pigination info
+  const [loading, setLoading] = useState(true);  // track loading status 
+  const [error, setError] = useState(null);  // store any errors 
 
+  //useEffect hook to fetch data when the component mounts
   useEffect(() => {
-    fetchCharacters();
+    fetchCharacters();// fetch all characters initially 
   }, []);
 
-  const fetchCharacters = async (url) => {
+  // This helps fetch characters from the API 
+  const fetchCharacters = async (url='https://rickandmortyapi.com/api/character') => {
     setLoading(true);
     setError(null);
     try {
@@ -30,27 +33,28 @@ function App() {
       setLoading(false);
     }
   };
-
+// Function to handle character selection 
   const handleCharacterSelection = (character) =>{
     setSelectedCharacter(character);
   };
-
+// Function to handle pagination: fetch the previous page
   const handlePrevious = () => {
     if (info.prev) {
       fetchCharacters(info.prev);
     }
   };
-
+// fetch the next page
   const handleNext = () => {
     if (info.next) {
       fetchCharacters(info.next);
     }
   };
-
+//function for search function 
   const handleSearch = (searchTerm) => {
     fetchCharacters(`https://rickandmortyapi.com/api/character/?name=${searchTerm}`);
   };
 
+  // Render component
   return (
     <div className="App">
       <header className="App-header">
