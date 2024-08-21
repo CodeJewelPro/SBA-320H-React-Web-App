@@ -4,8 +4,8 @@ const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = () => {
-    if (searchTerm.trim()!==''){
-      console.log(`Searching for ${searchTerm}`);
+    if (searchTerm.trim() !== '') {
+      console.log(`Searching for ${searchTerm}`)
       onSearch(searchTerm);
     }
   };
